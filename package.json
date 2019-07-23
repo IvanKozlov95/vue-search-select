@@ -1,19 +1,20 @@
 {
-  "name": "vue-search-select-css",
+  "name": "vue-ajax-search-select",
   "version": "1.0.33",
   "description": "A Vue.js search select form component that allows css customizations (based on vue-search-select)",
-  "author": "Javier Lecuona <javierlecuona@gmail.com>",
+  "author": "Ivan Kozlov <ivaan.kozlov@gmail.com>",
   "license": "MIT",
   "main": "publish/vue-search-select.js",
   "keywords": [
     "autocomplete",
     "vuejs",
     "select",
-    "search"
+    "search",
+    "ajax"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javiercbk/vue-search-select.git"
+    "url": "git+https://github.com/IvanKozlov95/vue-search-select.git"
   },
   "scripts": {
     "dev": "node build/dev-server.js",
