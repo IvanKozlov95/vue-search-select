@@ -1,6 +1,6 @@
 {
   "name": "vue-ajax-search-select",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "A Vue.js search select form component that allows css customizations (based on vue-search-select)",
   "author": "Ivan Kozlov <ivaan.kozlov@gmail.com>",
   "license": "MIT",
