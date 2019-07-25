@@ -24,6 +24,18 @@ export default {
       default: (text, inputText) => {
         return text.match(escapedRegExp(inputText))
       }
+    },
+    selectedOptionsClickable: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    onSelectedOptionClick (event, option) {
+      if (this.selectedOptionsClickable) {
+        event.stopPropagation()
+        this.$emit('selected-option-clicked', option)
+      }
     }
   }
 }

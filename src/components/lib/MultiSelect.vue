@@ -63,10 +63,6 @@
   export default {
     mixins: [baseMixin, commonMixin, optionAwareMixin],
     props: {
-      selectedOptionsClickable: {
-        type: Boolean,
-        default: false
-      },
       selectedOptions: {
         type: Array
       },
@@ -212,12 +208,6 @@
         r = r.replace(new RegExp('[ùúûü]', 'g'), 'u')
         r = r.replace(new RegExp('[ýÿ]', 'g'), 'y')
         return r
-      },
-      onSelectedOptionClick (event, option) {
-        if (this.selectedOptionsClickable) {
-          event.stopPropagation();
-          this.$emit('selected-option-clicked', option)
-        }
       }
     }
   }
