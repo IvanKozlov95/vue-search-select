@@ -4289,10 +4289,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  mixins: [_mixins.baseMixin, _mixins.commonMixin, _mixins.optionAwareMixin],
 	  props: {
-	    selectedOptionsClickable: {
-	      type: Boolean,
-	      default: false
-	    },
 	    selectedOptions: {
 	      type: Array
 	    },
@@ -4441,12 +4437,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      r = r.replace(new RegExp('[ùúûü]', 'g'), 'u');
 	      r = r.replace(new RegExp('[ýÿ]', 'g'), 'y');
 	      return r;
-	    },
-	    onSelectedOptionClick: function onSelectedOptionClick(event, option) {
-	      if (this.selectedOptionsClickable) {
-	        event.stopPropagation();
-	        this.$emit('selected-option-clicked', option);
-	      }
 	    }
 	  }
 	};
@@ -4507,6 +4497,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      type: Function,
 	      default: function _default(text, inputText) {
 	        return text.match((0, _utils.escapedRegExp)(inputText));
+	      }
+	    },
+	    selectedOptionsClickable: {
+	      type: Boolean,
+	      default: false
+	    }
+	  },
+	  methods: {
+	    onSelectedOptionClick: function onSelectedOptionClick(event, option) {
+	      if (this.selectedOptionsClickable) {
+	        event.stopPropagation();
+	        this.$emit('selected-option-clicked', option);
 	      }
 	    }
 	  }
@@ -5433,7 +5435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".ui.dropdown .menu>.item.current{background:rgba(0,0,0,.05)}", ""]);
+	exports.push([module.id, ".ui.dropdown .menu>.item.current{background:rgba(0,0,0,.05)}.clickable{pointer-events:all}", ""]);
 	
 	// exports
 
@@ -9309,11 +9311,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }), _vm._v(" "), _vm._l((_vm.selectedOptions), function(option) {
 	    return [_c('a', {
 	      staticClass: "ui label transition visible",
+	      class: {
+	        'clickable': _vm.selectedOptionsClickable
+	      },
 	      staticStyle: {
 	        "display": "inline-block !important"
 	      },
 	      attrs: {
 	        "data-vss-custom-attr": _vm.customAttr(option)
+	      },
+	      on: {
+	        "click": function($event) {
+	          _vm.onSelectedOptionClick($event, option)
+	        }
 	      }
 	    }, [_vm._v("\n      " + _vm._s(option.text)), _c('i', {
 	      staticClass: "delete icon",
