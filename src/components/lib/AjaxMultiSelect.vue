@@ -7,6 +7,8 @@
     <template v-for="option in selectedOptions">
       <a class="ui label transition visible"
          style="display: inline-block !important;"
+         :class="{ 'clickable': selectedOptionsClickable }"
+         @click="onSelectedOptionClick($event, option)"
          :data-vss-custom-attr="customAttr(option)">
         {{option.text}}<i class="delete icon" @click="deleteItem(option)"></i>
       </a>
@@ -311,5 +313,9 @@
   /* Menu Item Hover for Key event */
   .ui.dropdown .menu > .item.current {
     background: rgba(0, 0, 0, 0.05);
+  }
+
+  .clickable {
+    pointer-events: all;
   }
 </style>
