@@ -28,6 +28,10 @@ export default {
     selectedOptionsClickable: {
       type: Boolean,
       default: false
+    },
+    fetchOnCreated: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {

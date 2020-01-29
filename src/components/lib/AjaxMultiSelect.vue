@@ -105,7 +105,9 @@
     },
     created () {
       this.originalValues = this.selectedOptions
-      this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false })
+      if (this.fetchOnCreated) {
+        this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false })
+      }
     },
     computed: {
       optionsWithOriginal () {
@@ -201,6 +203,9 @@
       },
       openOptions () {
         common.openOptions(this)
+        if (!this.fetchOnCreated) {
+          this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false })
+        }
       },
       blurInput () {
         common.blurInput(this)

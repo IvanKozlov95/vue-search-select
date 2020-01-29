@@ -3043,7 +3043,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  created: function created() {
 	    this.originalValue = this.selectedOption;
-	    this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false });
+	    if (this.fetchOnCreated) {
+	      this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false });
+	    }
 	  },
 	  data: function data() {
 	    return {
@@ -3159,7 +3161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    openOptions: function openOptions() {
 	      _common2.default.openOptions(this);
-	      if (this.selectedOption && this.selectedOption.value) {
+	      if (this.selectedOption && this.selectedOption.value || !this.fetchOnCreated) {
 	        this._requestAsyncData({ term: this.searchText, delayMillis: 0, toggleShow: false });
 	      }
 	    },
@@ -3341,7 +3343,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  created: function created() {
 	    this.originalValues = this.selectedOptions;
-	    this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false });
+	    if (this.fetchOnCreated) {
+	      this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false });
+	    }
 	  },
 	
 	  computed: {
@@ -3440,6 +3444,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    openOptions: function openOptions() {
 	      _common2.default.openOptions(this);
+	      if (!this.fetchOnCreated) {
+	        this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false });
+	      }
 	    },
 	    blurInput: function blurInput() {
 	      _common2.default.blurInput(this);
@@ -4502,6 +4509,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    selectedOptionsClickable: {
 	      type: Boolean,
 	      default: false
+	    },
+	    fetchOnCreated: {
+	      type: Boolean,
+	      default: true
 	    }
 	  },
 	  methods: {

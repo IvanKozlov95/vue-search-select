@@ -71,7 +71,9 @@
     },
     created () {
       this.originalValue = this.selectedOption
-      this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false })
+      if (this.fetchOnCreated) {
+        this._requestAsyncData({ term: '', delayMillis: 0, toggleShow: false })
+      }
     },
     data () {
       return {
@@ -180,7 +182,7 @@
       },
       openOptions () {
         common.openOptions(this)
-        if (this.selectedOption && this.selectedOption.value) {
+        if ((this.selectedOption && this.selectedOption.value) || !this.fetchOnCreated) {
           this._requestAsyncData({ term: this.searchText, delayMillis: 0, toggleShow: false })
         }
       },
