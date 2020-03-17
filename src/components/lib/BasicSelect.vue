@@ -99,8 +99,8 @@
       },
       customAttrs () {
         try {
-          if (Array.isArray(this.optionsWithOriginal)) {
-            return this.optionsWithOriginal.map(o => this.customAttr(o))
+          if (Array.isArray(this.filteredOptions)) {
+            return this.filteredOptions.map(o => this.customAttr(o))
           }
         } catch (e) {
           // if there is an error, just return an empty array

@@ -3647,8 +3647,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this2 = this;
 	
 	      try {
-	        if (Array.isArray(this.optionsWithOriginal)) {
-	          return this.optionsWithOriginal.map(function (o) {
+	        if (Array.isArray(this.filteredOptions)) {
+	          return this.filteredOptions.map(function (o) {
 	            return _this2.customAttr(o);
 	          });
 	        }
